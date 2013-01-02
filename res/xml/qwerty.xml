@@ -16,6 +16,12 @@
 ** See the License for the specific language governing permissions and 
 ** limitations under the License.
 */
+
+/*
+** Instead of going via the hashmap solution. We could just add the android:keyOutputText
+** to the <key elements and just add the Kurdish character. That is more straight forward
+** currently it works just as well.
+*/
 -->
 
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +51,7 @@
         <Key android:codes="100" android:keyLabel="د"/>
         <Key android:codes="102" android:keyLabel="ف"/>
         <Key android:codes="103" android:keyLabel="گ"/>
-        <Key android:codes="104" android:keyLabel="ه"/>
+        <Key android:codes="104" android:keyLabel="ھ"/>
         <Key android:codes="106" android:keyLabel="ژ"/>
         <Key android:codes="107" android:keyLabel="ک"/>
         <Key android:codes="108" android:keyLabel="ل" android:keyEdgeFlags="right"/>

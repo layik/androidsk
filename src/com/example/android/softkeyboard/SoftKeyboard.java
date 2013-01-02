@@ -95,12 +95,12 @@ public class SoftKeyboard extends InputMethodService
         converter.put("a", "\u0627");
         converter.put("A", "\u0622");
         converter.put("b", "\u0628");
-        converter.put("B", "\u06CC");
+        converter.put("B", "\u06C3");
         converter.put("c", "\u062C");
         converter.put("C", "\u0686");
         converter.put("d", "\u062F");
         converter.put("D", "\u0630");
-        converter.put("e", "\u06D5");
+        converter.put("e", "\u06D5");//http://en.wikipedia.org/wiki/Arabic_script_in_Unicode 06C1 did not work
         converter.put("E", "\u064A");
         converter.put("f", "\u0641");
         converter.put("F", "\u0625");

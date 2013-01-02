@@ -60,8 +60,8 @@
         <Key android:codes="67" android:keyLabel="چ"/>
         <Key android:codes="86" android:keyLabel="ظ"/>
         <Key android:codes="66" android:keyLabel="ة"/>
-        <Key android:codes="78" android:keyLabel="»"/>
-        <Key android:codes="77" android:keyLabel="«"/>
+        <Key android:codes="78" android:keyLabel="ــ" android:keyOutputText="ـ"/>
+        <Key android:codes="77" android:keyLabel="ئا" android:keyOutputText="ئا"/>
         <Key android:codes="-5" android:keyIcon="@drawable/sym_keyboard_delete" 
                 android:keyWidth="15%p" android:keyEdgeFlags="right"
                 android:isRepeatable="true"/>
