@@ -75,6 +75,7 @@ public class SoftKeyboard extends InputMethodService
     private LatinKeyboard mSymbolsKeyboard;
     private LatinKeyboard mSymbolsShiftedKeyboard;
     private LatinKeyboard mQwertyKeyboard;
+    private LatinKeyboard mQwertyShiftedKeyboard;
     
     private LatinKeyboard mCurKeyboard;
     
@@ -100,7 +101,7 @@ public class SoftKeyboard extends InputMethodService
         converter.put("d", "\u062F");
         converter.put("D", "\u0630");
         converter.put("e", "\u06D5");
-        converter.put("E", "\u06CC");
+        converter.put("E", "\u064A");
         converter.put("f", "\u0641");
         converter.put("F", "\u0625");
         converter.put("g", "\u06AF");
@@ -108,7 +109,7 @@ public class SoftKeyboard extends InputMethodService
         converter.put("h", "\u0647");
         converter.put("H", "\u06D5");
         converter.put("i", "\u062D");
-        converter.put("I", "\u0660");
+        converter.put("I", "\u0639");
         converter.put("j", "\u0698");
         converter.put("J", "\u0623");
         converter.put("k", "\u06A9");
@@ -174,6 +175,7 @@ public class SoftKeyboard extends InputMethodService
             mLastDisplayWidth = displayWidth;
         }
         mQwertyKeyboard = new LatinKeyboard(this, R.xml.qwerty);
+        mQwertyShiftedKeyboard = new LatinKeyboard(this, R.xml.qwerty_shift);
         mSymbolsKeyboard = new LatinKeyboard(this, R.xml.symbols);
         mSymbolsShiftedKeyboard = new LatinKeyboard(this, R.xml.symbols_shift);
     }
@@ -323,6 +325,7 @@ public class SoftKeyboard extends InputMethodService
         // Apply the selected keyboard to the input view.
         mInputView.setKeyboard(mCurKeyboard);
         mInputView.closing();
+        //API LEVEL 11 so crashes on 2.3.3 api10AVD
         final InputMethodSubtype subtype = mInputMethodManager.getCurrentInputMethodSubtype();
         mInputView.setSubtypeOnSpaceKey(subtype);
     }
@@ -564,8 +567,15 @@ public class SoftKeyboard extends InputMethodService
                 if (keyCode >= '0' && keyCode <= '9') {
                     keyDownUp(keyCode - '0' + KeyEvent.KEYCODE_0);
                 } else {
-                	
-                    getCurrentInputConnection().commitText(String.valueOf((char) keyCode), 1);
+                	//checking for Kurdi comma
+                	String kurdiChar = "";
+                	if(keyCode == 44){ //ASCII value of comma
+                		Log.d("SoftKeyboard.sendKey","layik: comma value: ascii :: "+ keyCode);
+                		kurdiChar = converter.get(String.valueOf((char) keyCode));
+                	}else{
+                		kurdiChar = String.valueOf((char) keyCode);
+                	}
+                    getCurrentInputConnection().commitText(kurdiChar, 1);
                 }
                 break;
         }
@@ -661,7 +671,7 @@ public class SoftKeyboard extends InputMethodService
         } else {
             keyDownUp(KeyEvent.KEYCODE_DEL);
         }
-        updateShiftKeyState(getCurrentInputEditorInfo());
+        //updateShiftKeyState(getCurrentInputEditorInfo());
     }
 
     private void handleShift() {
@@ -672,8 +682,11 @@ public class SoftKeyboard extends InputMethodService
         Keyboard currentKeyboard = mInputView.getKeyboard();
         if (mQwertyKeyboard == currentKeyboard) {
             // Alphabet keyboard
-            checkToggleCapsLock();
-            mInputView.setShifted(mCapsLock || !mInputView.isShifted());
+//            checkToggleCapsLock();
+//            mInputView.setShifted(mCapsLock || !mInputView.isShifted());
+          //change keyboard view to shift!
+          mInputView.setKeyboard(mQwertyShiftedKeyboard);
+          mQwertyShiftedKeyboard.setShifted(true);
         } else if (currentKeyboard == mSymbolsKeyboard) {
             mSymbolsKeyboard.setShifted(true);
             mInputView.setKeyboard(mSymbolsShiftedKeyboard);
@@ -682,6 +695,12 @@ public class SoftKeyboard extends InputMethodService
             mSymbolsShiftedKeyboard.setShifted(false);
             mInputView.setKeyboard(mSymbolsKeyboard);
             mSymbolsKeyboard.setShifted(false);
+        } else if (currentKeyboard == mQwertyShiftedKeyboard){
+            checkToggleCapsLock();
+//            Log.d("else if: handle shift", "Status : " + String.valueOf(mCapsLock));
+            //return the normal qwerty and remove shift
+        	mInputView.setKeyboard(mQwertyKeyboard);
+        	mInputView.setShifted(false);
         }
     }
     

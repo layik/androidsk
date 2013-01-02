@@ -26,16 +26,16 @@
     >
 
     <Row>
-        <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
-        <Key android:codes="50" android:keyLabel="2"/>
-        <Key android:codes="51" android:keyLabel="3"/>
-        <Key android:codes="52" android:keyLabel="4"/>
-        <Key android:codes="53" android:keyLabel="5"/>
-        <Key android:codes="54" android:keyLabel="6"/>
-        <Key android:codes="55" android:keyLabel="7"/>
-        <Key android:codes="56" android:keyLabel="8"/>
-        <Key android:codes="57" android:keyLabel="9"/>
-        <Key android:codes="48" android:keyLabel="0" android:keyEdgeFlags="right"/>
+        <Key android:codes="49" android:keyLabel="١" android:keyEdgeFlags="left"/>
+        <Key android:codes="50" android:keyLabel="٢"/>
+        <Key android:codes="51" android:keyLabel="۳"/>
+        <Key android:codes="52" android:keyLabel="٤"/>
+        <Key android:codes="53" android:keyLabel="٥"/>
+        <Key android:codes="54" android:keyLabel="٦"/>
+        <Key android:codes="55" android:keyLabel="۷"/>
+        <Key android:codes="56" android:keyLabel="۸"/>
+        <Key android:codes="57" android:keyLabel="۹"/>
+        <Key android:codes="48" android:keyLabel="٠" android:keyEdgeFlags="right"/>
     </Row>
     
     <Row>
@@ -59,9 +59,9 @@
         <Key android:codes="34" android:keyLabel="&quot;"/>
         <Key android:codes="39" android:keyLabel="\'"/>
         <Key android:codes="58" android:keyLabel=":"/>
-        <Key android:codes="59" android:keyLabel=";"/>
+        <Key android:codes="59" android:keyLabel="؛"/>
         <Key android:codes="47" android:keyLabel="/" />
-        <Key android:codes="63" android:keyLabel="\?"/>
+        <Key android:codes="63" android:keyLabel="؟"/>
         <Key android:codes="-5" android:keyIcon="@drawable/sym_keyboard_delete"
                 android:keyWidth="15%p" android:keyEdgeFlags="right"
                 android:isRepeatable="true"/>
@@ -70,10 +70,10 @@
     <Row  android:rowEdgeFlags="bottom">
         <Key android:codes="-3" android:keyIcon="@drawable/sym_keyboard_done"
                 android:keyWidth="20%p" android:keyEdgeFlags="left" />
-        <Key android:codes="-2" android:keyLabel="ABC" android:keyWidth="15%p" />
+        <Key android:codes="-2" android:keyLabel="پ ی ت" android:keyWidth="15%p" />
         <Key android:codes="32" android:keyIcon="@drawable/sym_keyboard_space" android:keyWidth="30%p" 
                 android:isRepeatable="true"/>
-        <Key android:codes="44" android:keyLabel="," android:keyWidth="15%p" />
+        <Key android:codes="44" android:keyLabel="،" android:keyWidth="15%p" />
         <Key android:codes="10" android:keyIcon="@drawable/sym_keyboard_return"
                 android:keyWidth="20%p" android:keyEdgeFlags="right"
                 />
